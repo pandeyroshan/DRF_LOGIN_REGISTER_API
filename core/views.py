@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny, IsAutheticated
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
     HTTP_404_NOT_FOUND,
@@ -13,7 +13,7 @@ from rest_framework.response import Response
 
 
 @api_view(["GET"])
-@permission_classes((IsAutheticated,))
+@permission_classes((IsAuthenticated,))
 def login(request):
     params=request.data
     username = params["username"]
