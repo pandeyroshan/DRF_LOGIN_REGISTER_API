@@ -11,8 +11,8 @@ from rest_framework.status import (
 )
 from rest_framework.response import Response
 
-
-@api_view(["GET"])
+@csrf_exempt
+@api_view(["POST"])
 @permission_classes((IsAuthenticated,))
 def login(request):
     params=request.data
@@ -28,7 +28,7 @@ def login(request):
     token, _ = Token.objects.get_or_create(user=user)
     return Response({'token': token.key},
                     status=HTTP_200_OK)
-
+@csrf_exempt
 @api_view(["POST"])
 @permission_classes((AllowAny,))
 def register(request):
