@@ -13,7 +13,7 @@ from rest_framework.response import Response
 
 @csrf_exempt
 @api_view(["POST"])
-@permission_classes((IsAuthenticated,))
+@permission_classes((AllowAny,))
 def login(request):
     params=request.data
     username = params["username"]
